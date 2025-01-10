@@ -20,7 +20,7 @@ export default function (opt) {
 
   function GetClientIdFromHostname(hostname) {
     // Remove 'http://' or 'https://' from the domain if present
-    const cleanDomain = domain.replace(/^https?:\/\//, "");
+    const cleanDomain = opt.domain.replace(/^https?:\/\//, "");
 
     // Remove 'http://' or 'https://' from the hostname if present
     const cleanHostname = hostname.replace(/^https?:\/\//, "");
