@@ -19,18 +19,24 @@ export default function (opt) {
   const landingPage = opt.landing || "https://localtunnel.github.io/www/";
 
   function GetClientIdFromHostname(hostname) {
-    if (!opt.domain) {
-      return myTldjs.getSubdomain(hostname);
+    // Remove 'http://' or 'https://' from the domain if present
+    const cleanDomain = domain.replace(/^https?:\/\//, "");
+
+    // Remove 'http://' or 'https://' from the hostname if present
+    const cleanHostname = hostname.replace(/^https?:\/\//, "");
+
+    if (!cleanDomain) {
+      return myTldjs.getSubdomain(cleanHostname);
     }
 
-    // If opt.domain is provided, treat it as the TLD
-    const domainParts = opt.domain.split(".");
-    const hostnameParts = hostname.split(".");
+    // If domain is provided, treat it as the TLD
+    const domainParts = cleanDomain.split(".");
+    const hostnameParts = cleanHostname.split(".");
 
     // Check if the hostname ends with the provided domain
-    if (hostnameParts.slice(-domainParts.length).join(".") === opt.domain) {
+    if (hostnameParts.slice(-domainParts.length).join(".") === cleanDomain) {
       // If the hostname is exactly the provided domain, return null (no subdomain)
-      if (hostname === opt.domain) {
+      if (cleanHostname === cleanDomain) {
         return null;
       }
 
