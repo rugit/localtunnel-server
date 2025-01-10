@@ -10,5 +10,5 @@ RUN yarn install --production && yarn cache clean
 COPY . /app
 
 ENV NODE_ENV production
-ENV DEBUG=localtunnel
+ENV DEBUG=localtunnel*
 ENTRYPOINT ["node", "-r", "esm", "./bin/server"]
