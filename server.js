@@ -148,7 +148,7 @@ export default function (opt) {
     }
 
     const clientId = GetClientIdFromHostname(hostname);
-    print(clientId);
+    console.log(clientId);
     if (!clientId) {
       appCallback(req, res);
       return;
