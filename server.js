@@ -99,6 +99,7 @@ export default function (opt) {
       const url = schema + "://" + info.id + "." + ctx.request.host;
       info.url = url;
       ctx.body = info;
+      debug("making new client with id 1%s", info);
       return;
     }
 
@@ -138,6 +139,7 @@ export default function (opt) {
     const url = schema + "://" + info.id + "." + ctx.request.host;
     info.url = url;
     ctx.body = info;
+    debug("making new client with id 2%s", info);
     return;
   });
 
