@@ -1,0 +1,15 @@
+services:
+  localtunnel:
+    build: . # Build the image from the local Dockerfile
+    container_name: localtunnel
+    network_mode: host # Use host networking
+    restart: always
+    command:
+      [
+        "--port",
+        "3000",
+        "--domain",
+        "http://tunnel.chopfinance.ai",
+        "--secure",
+        "true",
+      ]
