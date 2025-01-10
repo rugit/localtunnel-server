@@ -149,8 +149,8 @@ export default function (opt) {
     }
 
     const clientId = GetClientIdFromHostname(hostname);
+    debug("Hostname: %s", hostname);
     debug("Client ID: %s", clientId);
-    console.log(clientId);
     if (!clientId) {
       appCallback(req, res);
       return;
